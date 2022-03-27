@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "441242910142",
+    "project_id": "nirvana-29f88",
+    "storage_bucket": "nirvana-29f88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441242910142:android:1f062db49fa882555f8def",
+        "android_client_info": {
+          "package_name": "com.JayKumar.nirvana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441242910142-fi67du06f1lm49qtk9v5mlrsubn0edmm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAddIOurFmPW1AweOVFP1dyIohhBO9mhmQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "441242910142-fi67du06f1lm49qtk9v5mlrsubn0edmm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
