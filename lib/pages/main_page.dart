@@ -1,11 +1,15 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:nirvana/componenets/reusable_container.dart';
+import 'package:nirvana/componenets/upload.dart';
 import 'package:nirvana/pages/welcome_screen.dart';
 // import 'package:neon/neon.dart';
 import '../componenets/rounded_button.dart';
+import '../componenets/rounded_button2.dart';
 import '../constants/constants.dart';
 import '../neon.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -15,7 +19,6 @@ import 'login_screen.dart';
 // import '../neon.dart';
 // final _firestore = FirebaseFirestore.instance;
 final _auth = FirebaseAuth.instance;
-
 
 void playSound(var wavNumber) {
   final player = AudioCache();
@@ -32,9 +35,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,50 +44,117 @@ class _MainPageState extends State<MainPage> {
         child: ListView(
           children: [
             Column(
+              // crossAxisAlignment: CrossAxisAlignment.stretch,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Neon(text: 'NIRVANA', color: Colors.deepPurple, font: NeonFont.Automania, glowing: true, fontSize: 50, flickeringText: true,),
+                Neon(
+                  text: 'NIRVANA',
+                  color: Colors.deepPurple,
+                  font: NeonFont.Automania,
+                  glowing: true,
+                  fontSize: 50,
+                  flickeringText: true,
+                ),
                 const SizedBox(
                   height: 50,
                 ),
-                const ReusableContainer(audioNum: 1, artistName: 'Chainsmokers', songName: 'Somebody Drew Love',),
+                const ReusableContainer(
+                  audioNum: 1,
+                  artistName: 'Chainsmokers',
+                  songName: 'Somebody Drew Love',
+                ),
                 const SizedBox(
                   height: 50,
                 ),
-                const ReusableContainer(audioNum: 2,artistName: 'Deemo', songName: 'Endless Dreams',),
+                const ReusableContainer(
+                  audioNum: 2,
+                  artistName: 'Deemo',
+                  songName: 'Endless Dreams',
+                ),
                 const SizedBox(
                   height: 50,
                 ),
-                const ReusableContainer(audioNum: 3,artistName: 'Rapbit', songName: 'Dreams',),
+                const ReusableContainer(
+                  audioNum: 3,
+                  artistName: 'Rapbit',
+                  songName: 'Dreams',
+                ),
                 const SizedBox(
                   height: 50,
                 ),
-                const ReusableContainer(audioNum: 4,artistName: 'Mii', songName: 'Nine Point Eight',),
+                const ReusableContainer(
+                  audioNum: 4,
+                  artistName: 'Mii',
+                  songName: 'Nine Point Eight',
+                ),
                 const SizedBox(
                   height: 50,
                 ),
-                const ReusableContainer(audioNum: 5,artistName: 'Coldplay', songName: 'Viva La Vida',),
+                const ReusableContainer(
+                  audioNum: 5,
+                  artistName: 'Coldplay',
+                  songName: 'Viva La Vida',
+                ),
                 const SizedBox(
                   height: 50,
                 ),
-                const ReusableContainer(audioNum: 6,artistName: 'Radwimp', songName: 'Nandemonaiya',),
+                const ReusableContainer(
+                  audioNum: 6,
+                  artistName: 'Radwimp',
+                  songName: 'Nandemonaiya',
+                ),
                 const SizedBox(
                   height: 50,
                 ),
-                const ReusableContainer(audioNum: 7,artistName: 'TK', songName: 'Unravel',),
+                const ReusableContainer(
+                  audioNum: 7,
+                  artistName: 'TK',
+                  songName: 'Unravel',
+                ),
                 const SizedBox(
                   height: 50,
                 ),
-                const ReusableContainer(audioNum: 8,artistName: 'Chelsea Cutler', songName: 'Crazier Things',),
+                const ReusableContainer(
+                  audioNum: 8,
+                  artistName: 'Chelsea Cutler',
+                  songName: 'Crazier Things',
+                ),
                 const SizedBox(
                   height: 50,
                 ),
-                const ReusableContainer(audioNum: 9,artistName: 'Jeramy Zucker & \n Chelsea Cutler', songName: 'Better Off',),
+                const ReusableContainer(
+                  audioNum: 9,
+                  artistName: 'Jeramy Zucker & \n Chelsea Cutler',
+                  songName: 'Better Off',
+                ),
                 const SizedBox(
                   height: 50,
                 ),
-                RoundedButton(title: 'Log Out', onPressed: () { Navigator.pushNamed(context, WelcomeScreen.id);  _auth.signOut(); setState(() {
-
-                });}, color: Colors.white,)
+                RoundedButton(
+                  title: 'Log Out',
+                  onPressed: () {
+                    setState(
+                      () {
+                        Navigator.popAndPushNamed(context, WelcomeScreen.id);
+                        _auth.signOut();
+                      },
+                    );
+                  },
+                  color: Colors.white,
+                ),
+                RoundedButton(
+                  title: 'Upload',
+                  onPressed: () {
+                    Navigator.pushNamed(context, IsOK.id);
+                    // showDialog(
+                    //   context: context,
+                    //   builder: (_) {
+                    //     return const IsOK();
+                    //   },
+                    // );
+                  },
+                  color: Colors.white,
+                )
               ],
             )
           ],

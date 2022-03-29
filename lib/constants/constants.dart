@@ -24,3 +24,5 @@ const kTextFieldDecorations = InputDecoration(
 const kConstIconColor = Color(0xFFB10455);
 
 const kConstBackgroundColor = Color(0xFF1F0E2F);
+
+const kConstShadowColor = Color(0xFFB902BB);

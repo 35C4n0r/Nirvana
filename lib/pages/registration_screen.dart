@@ -137,7 +137,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     build(context);
                     setState(() {
                       showSpinner = false;
-
                     });
                     showDialog(
                       context: context,

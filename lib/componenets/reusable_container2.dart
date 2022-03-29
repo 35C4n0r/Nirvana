@@ -1,26 +1,33 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 // import 'package:neon/neon.dart';
 import 'package:nirvana/constants/constants.dart';
 import 'package:audioplayers/audioplayers.dart';
 import '../neon.dart';
 import 'music_player.dart';
+import 'package:image_picker/image_picker.dart';
 
-
-class ReusableContainer extends StatefulWidget {
+class ReusableContainer2 extends StatefulWidget {
   final String songName;
   final String artistName;
-  final int audioNum;
-  const ReusableContainer({Key? key, required this.audioNum, required this.songName, required this.artistName}) : super(key: key);
+  // final int audioNum;
+  final File image;
+  const ReusableContainer2(
+      {Key? key,
+      required this.image,
+      required this.songName,
+      required this.artistName})
+      : super(key: key);
 
   @override
-  State<ReusableContainer> createState() => _ReusableContainerState();
+  State<ReusableContainer2> createState() => _ReusableContainer2State();
 }
 
-class _ReusableContainerState extends State<ReusableContainer> {
-  late int audioNum = widget.audioNum;
+class _ReusableContainer2State extends State<ReusableContainer2> {
+  late File image = widget.image;
   late String songName = widget.songName;
   late String artistName = widget.artistName;
-
 
   late bool newSong = false;
   late bool pause = false;
@@ -33,10 +40,9 @@ class _ReusableContainerState extends State<ReusableContainer> {
     glow = true;
   }
 
-
-    @override
-    Widget build(BuildContext context) {
-      return Container(
+  @override
+  Widget build(BuildContext context) {
+    return Container(
         height: 100,
         width: MediaQuery.of(context).size.width * 0.9,
         decoration: const BoxDecoration(
@@ -59,8 +65,8 @@ class _ReusableContainerState extends State<ReusableContainer> {
           children: [
             ClipRRect(
               borderRadius: kConstBoxRadius,
-              child: Image.asset(
-                'images/$audioNum.jpg',
+              child: Image.file(
+                image,
                 width: 100,
                 height: 100,
                 fit: BoxFit.cover,
@@ -74,30 +80,28 @@ class _ReusableContainerState extends State<ReusableContainer> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Flexible(
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [Neon(
+                    child: ListView(scrollDirection: Axis.horizontal, children: [
+                      Neon(
                         text: songName,
                         // fontSize: 25,
                         color: Colors.red,
                         font: NeonFont.Monoton,
                         glowing: glow,
                         // flickeringText: true,
-                      ),]
-                    ),
+                      ),
+                    ]),
                   ),
                   Flexible(
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [Neon(
+                    child: ListView(scrollDirection: Axis.horizontal, children: [
+                      Neon(
                         text: artistName,
                         color: Colors.red,
                         fontSize: 15,
                         font: NeonFont.LasEnter,
                         glowing: glow,
                         // flickeringText: true,
-                      ),]
-                    ),
+                      ),
+                    ]),
                   ),
                 ],
               ),
@@ -106,15 +110,14 @@ class _ReusableContainerState extends State<ReusableContainer> {
               width: 0,
             ),
             Padding(
-              padding: const EdgeInsets.only(right:  8.0, left: 8.0, bottom: 10),
+              padding: const EdgeInsets.only(right: 8.0, left: 8.0, bottom: 10),
               child: Container(
                 child: IconButton(
                   onPressed: () {
-                    if (!pause){
-                      playSound(audioNum);
+                    if (!pause) {
+                      playSound(3);
                       pause = true;
-                    }
-                    else{
+                    } else {
                       player.pause();
                       pause = false;
                     }

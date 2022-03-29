@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:nirvana/componenets/upload.dart';
+
 import '../constants/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +60,7 @@ class _NirvanaState extends State<Nirvana> {
           MainPage.id : (context) => const MainPage(),
           RegistrationScreen.id : (context) => const RegistrationScreen(),
           LoginScreen.id : (context) => const LoginScreen(),
+          IsOK.id : (context) => const IsOK(),
         }
     );
   }
